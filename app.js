@@ -32,6 +32,7 @@ app.get('/cachepriorities', (req, res) => {
 })
 
 
+/*
 var getWeather = async () => {
   // console.log("refreshing bearer token")
   var coords = [process.env.longitude, process.env.latitude]
@@ -49,13 +50,17 @@ var getWeather = async () => {
   const data = await response.json()
   return data;
 }
+*/
 
+
+/*
 app.get('/weather', (req, res) => {
   getWeather().then( (weather) => {
     // return prediction for next 10 hours
     res.send(weather.forecasts.slice(0, 10))
   })
 })
+*/
 
 // Load app file for testing
 // const fs = require('fs')

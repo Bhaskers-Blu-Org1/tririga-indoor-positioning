@@ -9,11 +9,11 @@ Consider using cloud functions as a backend, persist token and other variables a
 <!-- Add a new Title and fill in the blanks -->
 # IoT - Integrate an Indoor Positioning System with TRIRIGA
 
-In this Code Pattern, we'll demonstrate how to build and deploy a custom perceptive application within a TRIRIGA instance. This perceptive application demonstrates how to render and update interactive floor plans from TRIRIGA, and to pull data from the Weather Company API. We also demonstrate how to deploy an indoor positioning system to render markers on the floor plan indicating the location of each user. The positioning system works by measuring the signal strength of all WiFi routers within the area.
+In this Code Pattern, we'll demonstrate how to build and deploy a custom perceptive application within a TRIRIGA instance. This perceptive application demonstrates how to render and update interactive floor plans from TRIRIGA. We also demonstrate how to deploy an indoor positioning system to render markers on the floor plan indicating the location of each user. The positioning system works by measuring the signal strength of all WiFi routers within the area.
 
 This Pattern is a continuation of the previous "tririga-occupancy" project [here](https://github.com/IBM/tririga-occupancy). If you have previously completed that pattern, you can skip steps 1-3 in this one.
 
-TRIRIGA is a system used to monitor enterprise facilities by integrating data from real estate portfolios, construction projects, workplace assets, etc. We can extend the TRIRIGA capabilities with custom business logic by deploying a "Perceptive Application". A [Perceptive App](https://www.ibm.com/developerworks/community/wikis/home?lang=en#!/wiki/IBM%20TRIRIGA1/page/What%20are%20Perceptive%20apps) is a dynamic, custom application built using the TRIRIGA UX Framework. This is structured as a model-view-controller (MVC) architecture. The application "View" is built using the [Polymer](https://www.polymer-project.org/) library, which makes it simple to create an interactive dashboard using modular [web components](https://www.webcomponents.org/introduction). Web components can provide visual elements such as graphs, maps, images, and so on. Each component can be rendered by data pulled from internal TRIRIGA reports and/or API data from other offerings (Building Insights, Weather Company).
+TRIRIGA is a system used to monitor enterprise facilities by integrating data from real estate portfolios, construction projects, workplace assets, etc. We can extend the TRIRIGA capabilities with custom business logic by deploying a "Perceptive Application". A [Perceptive App](https://www.ibm.com/developerworks/community/wikis/home?lang=en#!/wiki/IBM%20TRIRIGA1/page/What%20are%20Perceptive%20apps) is a dynamic, custom application built using the TRIRIGA UX Framework. This is structured as a model-view-controller (MVC) architecture. The application "View" is built using the [Polymer](https://www.polymer-project.org/) library, which makes it simple to create an interactive dashboard using modular [web components](https://www.webcomponents.org/introduction). Web components can provide visual elements such as graphs, maps, images, and so on. Each component can be rendered by data pulled from internal TRIRIGA reports and/or API data from other offerings (Building Insights, "FIND" Location server).
 
 The project dependencies (Polymer, Web Components, UX Framework) are all pre-installed within the TRIRIGA instance. Additional third-party dependencies can be uploaded along with the project code.
 
@@ -32,7 +32,7 @@ The project dependencies (Polymer, Web Components, UX Framework) are all pre-ins
 2. Indoor positioning system processes measurements to determine mobile device location.
 3. Mobile device location is updated in Cloudant.
 4. User loads TRIRIGA Perceptive app.
-5. Perceptive app queries Weather Company API, building floor plan from TRIRIGA, and Location Data from Cloudant. Located devices are marked on the frontend floor plan.
+5. Perceptive app queries building floor plan from TRIRIGA, and Location Data from Cloudant. Located devices are marked on the frontend floor plan.
 
 <!-- 2. Node.js backend requests updated dataset from BI APIs every hour, and persists values into a Cloudant database. This allows for us to build a chronological hourly dataset which can be used to create custom analytics models/graphics.
 3. Node.js backend transforms data into required format for charts/graphs.
@@ -40,7 +40,7 @@ The project dependencies (Polymer, Web Components, UX Framework) are all pre-ins
 
 <!-- ![Architecture](/images/arch.png) -->
 <p align="center">
-<img src="https://i.imgur.com/bYrJwZC.png"/>
+<img src="https://i.imgur.com/9OkEN5j.png"/>
 </p>
 
 <!-- <p align="center">
@@ -124,7 +124,7 @@ Create the following services:
 * [**TRIRIGA Building Insights**](https://www.ibm.com/us-en/marketplace/iot-building-insights)
 * [**Kubernetes**](https://console.bluemix.net/catalog/infrastructure/containers-kubernetes)
 <!-- * [**Cloudant**](https://console.bluemix.net/catalog/services/cloudant) -->
-* [**Weather Company**](https://console.bluemix.net/catalog/services/weather-company-data)
+<!-- * [**Weather Company**](https://console.bluemix.net/catalog/services/weather-company-data) -->
 
 
 ### 2. Generate Application In TRIRIGA Dashboard
@@ -202,8 +202,6 @@ kitt_domain=https://<bi endpoint>-KITT.mybluemix.net/api
 domain=https://<bi endpoint>-agg.mybluemix.net/api
 cloudant_username=<cloudant password>
 cloudant_password=<cloudant password>
-weather_api_username=<weather_api_username>
-weather_api_password=<weather_api_password>
 ```
 
 ```
@@ -285,7 +283,7 @@ If the record has an associated graphic, we should see a floor plan at the very 
 <img src="https://i.imgur.com/mG05VdT.png" height="500" width="800" />
 </p>
 
-Next, if we scroll down a bit further, we'll also see a series of cards showing the weather forecast for the following 10 hours. These calls require several environment variables to be exported: Weather API Username, Weather API Password, Longitude and Latitude. The weather data is retrieved by the function below.
+<!-- Next, if we scroll down a bit further, we'll also see a series of cards showing the weather forecast for the following 10 hours. These calls require several environment variables to be exported: Weather API Username, Weather API Password, Longitude and Latitude. The weather data is retrieved by the function below.
 
 ```
 var getWeather = async () => {
@@ -310,7 +308,7 @@ And the weather forecast is rendered like so.
 
 <p align="center">
 <img src="https://i.imgur.com/5fMtFzE.png" height="500" width="800" />
-</p>
+</p> -->
 
 ### 5. Deploy positioning system
 
