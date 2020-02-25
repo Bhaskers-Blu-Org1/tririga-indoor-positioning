@@ -40,7 +40,7 @@ The project dependencies (Polymer, Web Components, UX Framework) are all pre-ins
 
 <!-- ![Architecture](/images/arch.png) -->
 <p align="center">
-<img src="https://i.imgur.com/9OkEN5j.png"/>
+<img src="https://developer.ibm.com/developer/patterns/indoor-positioning-mobile-app-iot-platform-tririga-building-insights/images/arch-diagram1.png"/>
 </p>
 
 <!-- <p align="center">
@@ -138,7 +138,6 @@ Next, click "Model Designer"
 <p align="center">
 <img src="https://i.imgur.com/BXqwkxs.png" height="500" width="800" />
 </p>
-https://i.imgur.com/xcEi1wi.png
 
 Click the "Add" button, and then enter a name for the application into the "Name", "ID", and "Exposed Name" Fields
 
